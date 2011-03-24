@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  journal_id: 1
+  year: 1
+  subject_id: 1
+  direct_articles_count: 1
+  descendant_articles_count: 1
+  articles_count: 1
+  start_year: 1
+  end_year: 1
+  direct_articles_counts: MyText
+  descendant_articles_counts: MyText
+  articles_counts: MyText
+
+two:
+  journal_id: 1
+  year: 1
+  subject_id: 1
+  direct_articles_count: 1
+  descendant_articles_count: 1
+  articles_count: 1
+  start_year: 1
+  end_year: 1
+  direct_articles_counts: MyText
+  descendant_articles_counts: MyText
+  articles_counts: MyText
