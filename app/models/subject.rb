@@ -1,6 +1,7 @@
 class Subject < ActiveRecord::Base
   has_many :journal_subjects
   has_many :journals, :through => :journal_subjects
+  has_many :mesh_trees
 
   def to_s
     term
@@ -9,6 +10,7 @@ class Subject < ActiveRecord::Base
   def to_l
     self
   end
+
   def articles
     articles_counts.split(/\|/).map {|s| s.to_i}
   end

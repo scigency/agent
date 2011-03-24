@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324012755) do
+ActiveRecord::Schema.define(:version => 20110324013459) do
 
   create_table "journal_subjects", :force => true do |t|
     t.integer "journal_id"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20110324012755) do
 
   add_index "journals", ["abbr"], :name => "index_journals_on_abbr"
   add_index "journals", ["articles_count"], :name => "index_journals_on_articles_count"
+
+  create_table "mesh_trees", :force => true do |t|
+    t.string  "tree_number", :limit => 64
+    t.integer "subject_id"
+    t.integer "parent_id"
+  end
+
+  add_index "mesh_trees", ["parent_id"], :name => "index_mesh_trees_on_parent_id"
 
   create_table "subjects", :force => true do |t|
     t.string  "term",                       :limit => 128
