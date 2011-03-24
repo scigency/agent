@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Abbr:</b>
+  <%= @journal.abbr %>
+</p>
+
+<p>
+  <b>Articles count:</b>
+  <%= @journal.articles_count %>
+</p>
+
+<p>
+  <b>Start year:</b>
+  <%= @journal.start_year %>
+</p>
+
+<p>
+  <b>End year:</b>
+  <%= @journal.end_year %>
+</p>
+
+<p>
+  <b>Articles counts:</b>
+  <%= @journal.articles_counts %>
+</p>
+
+
+<%= link_to 'Edit', edit_journal_path(@journal) %> |
+<%= link_to 'Back', journals_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  abbr: MyString
+  articles_count: 1
+  start_year: 1
+  end_year: 1
+  articles_counts: MyText
+
+two:
+  abbr: MyString
+  articles_count: 1
+  start_year: 1
+  end_year: 1
+  articles_counts: MyText
