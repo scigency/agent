@@ -2,6 +2,7 @@ class Subject < ActiveRecord::Base
   has_many :journal_subjects
   has_many :journals, :through => :journal_subjects
   has_many :mesh_trees
+  has_many :mesh_entry_terms
 
   def to_s
     term
