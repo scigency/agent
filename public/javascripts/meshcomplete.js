@@ -1,4 +1,5 @@
 $(function() {
+  $("#meshcomplete-box").append('<input id="meshcomplete" />').append('<span id="meshcomplete-clear" title="Clear search">&times;</span>');
   $("#meshcomplete").attr("value","").attr("size", 5);
   $("#meshcomplete-box").click(function(){  
     $("#meshcomplete").focus(); 

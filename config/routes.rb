@@ -1,4 +1,5 @@
 Scigency::Application.routes.draw do
+  root :to => "page#home"
   resources :subjects
 
   resources :journals
