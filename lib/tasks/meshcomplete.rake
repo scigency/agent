@@ -3,7 +3,6 @@ namespace :meshcomplete do
   desc "Import MeSH data."
   task :data => :environment do
     year = Time.now.year
-    Subject.delete_all
     MeshEntryTerm.delete_all
     open("ftp://nlmpubs.nlm.nih.gov/online/mesh/.asciimesh/d#{year}.bin") do |f|
       id, term = nil, nil
@@ -24,10 +23,6 @@ end
 
 def insert_record(id, term, entry_terms)
   puts term
-  m = Subject.new
-  m.id = id
-  m.term = term
-  m.save!
   e = MeshEntryTerm.create(:subject_id => id, :term => term)
   entry_terms.uniq.each do |t|
     e = MeshEntryTerm.create(:subject_id => id, :term => t)
