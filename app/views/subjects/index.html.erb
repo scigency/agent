@@ -1,0 +1,39 @@
+<h1>Listing subjects</h1>
+
+<table>
+  <tr>
+    <th>Term</th>
+    <th>Direct articles count</th>
+    <th>Descendant articles count</th>
+    <th>Articles count</th>
+    <th>Start year</th>
+    <th>End year</th>
+    <th>Direct articles counts</th>
+    <th>Descendant articles counts</th>
+    <th>Articles counts</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subjects.each do |subject| %>
+  <tr>
+    <td><%= subject.term %></td>
+    <td><%= subject.direct_articles_count %></td>
+    <td><%= subject.descendant_articles_count %></td>
+    <td><%= subject.articles_count %></td>
+    <td><%= subject.start_year %></td>
+    <td><%= subject.end_year %></td>
+    <td><%= subject.direct_articles_counts %></td>
+    <td><%= subject.descendant_articles_counts %></td>
+    <td><%= subject.articles_counts %></td>
+    <td><%= link_to 'Show', subject %></td>
+    <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
+    <td><%= link_to 'Destroy', subject, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subject', new_subject_path %>

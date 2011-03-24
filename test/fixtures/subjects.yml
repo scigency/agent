@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  term: MyString
+  direct_articles_count: 1
+  descendant_articles_count: 1
+  articles_count: 1
+  start_year: 1
+  end_year: 1
+  direct_articles_counts: 
+  descendant_articles_counts: MyText
+  articles_counts: MyText
+
+two:
+  term: MyString
+  direct_articles_count: 1
+  descendant_articles_count: 1
+  articles_count: 1
+  start_year: 1
+  end_year: 1
+  direct_articles_counts: 
+  descendant_articles_counts: MyText
+  articles_counts: MyText

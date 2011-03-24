@@ -1,0 +1,53 @@
+<%= form_for(@subject) do |f| %>
+  <% if @subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+
+      <ul>
+      <% @subject.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :term %><br />
+    <%= f.text_field :term %>
+  </div>
+  <div class="field">
+    <%= f.label :direct_articles_count %><br />
+    <%= f.text_field :direct_articles_count %>
+  </div>
+  <div class="field">
+    <%= f.label :descendant_articles_count %><br />
+    <%= f.text_field :descendant_articles_count %>
+  </div>
+  <div class="field">
+    <%= f.label :articles_count %><br />
+    <%= f.text_field :articles_count %>
+  </div>
+  <div class="field">
+    <%= f.label :start_year %><br />
+    <%= f.text_field :start_year %>
+  </div>
+  <div class="field">
+    <%= f.label :end_year %><br />
+    <%= f.text_field :end_year %>
+  </div>
+  <div class="field">
+    <%= f.label :direct_articles_counts %><br />
+    <%= f.text_field :direct_articles_counts %>
+  </div>
+  <div class="field">
+    <%= f.label :descendant_articles_counts %><br />
+    <%= f.text_area :descendant_articles_counts %>
+  </div>
+  <div class="field">
+    <%= f.label :articles_counts %><br />
+    <%= f.text_area :articles_counts %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Term:</b>
+  <%= @subject.term %>
+</p>
+
+<p>
+  <b>Direct articles count:</b>
+  <%= @subject.direct_articles_count %>
+</p>
+
+<p>
+  <b>Descendant articles count:</b>
+  <%= @subject.descendant_articles_count %>
+</p>
+
+<p>
+  <b>Articles count:</b>
+  <%= @subject.articles_count %>
+</p>
+
+<p>
+  <b>Start year:</b>
+  <%= @subject.start_year %>
+</p>
+
+<p>
+  <b>End year:</b>
+  <%= @subject.end_year %>
+</p>
+
+<p>
+  <b>Direct articles counts:</b>
+  <%= @subject.direct_articles_counts %>
+</p>
+
+<p>
+  <b>Descendant articles counts:</b>
+  <%= @subject.descendant_articles_counts %>
+</p>
+
+<p>
+  <b>Articles counts:</b>
+  <%= @subject.articles_counts %>
+</p>
+
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>

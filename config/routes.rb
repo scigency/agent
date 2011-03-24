@@ -1,4 +1,6 @@
 Scigency::Application.routes.draw do
+  resources :subjects
+
   resources :journals
 
   # The priority is based upon order of creation:
