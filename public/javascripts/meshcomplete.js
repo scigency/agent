@@ -1,18 +1,34 @@
 $(function() {
-  $("#meshcomplete-box").append('<input id="meshcomplete" />').append('<span id="meshcomplete-clear" title="Clear search">&times;</span>');
+  $("#meshcomplete-box").append('<input id="meshcomplete" />').append('<span id="meshcomplete-clear" title="Clear search">&times;</span>').append('<input type="hidden" id="meshcomplete-selected-ids"/>');
   $("#meshcomplete").attr("value","").attr("size", 5);
   $("#meshcomplete-box").click(function(){  
     $("#meshcomplete").focus(); 
   });
   $("#meshcomplete-box .remove").live("click", function(){  
+    var removed_id = $(this).parent().attr("data-meshcomplete-id");
+    var selected_ids = $("#meshcomplete-selected-ids").attr("value");
+    selected_ids = selected_ids.replace(new RegExp("," + removed_id), "");
+    $("#meshcomplete-selected-ids").attr("value", selected_ids);
     $(this).parent().remove();
     if ($("#meshcomplete-box .operator").length >= $("#meshcomplete-box .selected").length) {
       $("#meshcomplete-box .operator").last().remove();
+    }
+    if ($("#meshcomplete-box .selected").length > 0) {
+      $.get("/topjournals", { ids: selected_ids },
+        function(data) {
+          $("#journals").html(data);
+        }
+      );
+    } else {
+      $("#journals").html("");
     }
   });
   $("#meshcomplete-clear").live("click", function(){  
     $("#meshcomplete-box .selected").each(function(index) { $(this).remove() });
     $("#meshcomplete-box .operator").each(function(index) { $(this).remove() });
+    $("#meshcomplete-selected-ids").attr("value", "");
+    $("#meshcomplete").attr("value", "");
+    $("#journals").html("");
   });
   $("#meshcomplete").bind('keyup keydown blur update', function(){
     if($("#meshcomplete").attr("size") < $("#meshcomplete").val().length){
@@ -24,7 +40,7 @@ $(function() {
     source: "/meshcomplete",
     select: function(e, ui) {
       var selected = ui.item.value,
-          span = $("<span>").addClass("selected").text(selected);
+          span = $("<span>").addClass("selected").text(selected).attr("data-meshcomplete-id", ui.item.id);
       if ($("#meshcomplete-box .selected").length > 0) {
         var operator = $("<span>").addClass("operator").attr({
             }).html("AND").toggle(
@@ -46,6 +62,14 @@ $(function() {
           }).html("&times;").appendTo(span);
       span.insertBefore("#meshcomplete");
       $("#meshcomplete").attr("value","").attr("size", 5);
+      var selected_ids = $("#meshcomplete-selected-ids").attr("value").split(",");
+      selected_ids.push( ui.item.id );
+      $("#meshcomplete-selected-ids").attr("value", selected_ids.join(","));
+      $.get("/topjournals", { ids: selected_ids.join(",") },
+        function(data) {
+          $("#journals").html(data);
+        }
+      );
       return false;
     },
     focus: function() {

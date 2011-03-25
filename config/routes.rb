@@ -5,6 +5,7 @@ Scigency::Application.routes.draw do
   resources :journals
 
   match 'meshcomplete' => 'application#meshcomplete'
+  match 'topjournals' => 'journals#top'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
