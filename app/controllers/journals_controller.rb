@@ -85,8 +85,13 @@ class JournalsController < ApplicationController
     subject_ids = params[:ids].split(/,/).uniq.compact.reject {|id| id.blank?} if params[:ids].present?
     @journals = []
     if subject_ids.present?
-      @journals = JournalSubject.where(:subject_id => subject_ids).where(:year => 0).order("articles_count desc").limit(20).includes(:journal)
-      #@journals = JournalSubject.where(:subject_id => subject_ids).where(:year => 0).group(:journal_id).select([:journal_id, "sum(articles_count) as articles_count_sum"]).order("articles_count_sum desc").limit(10)
+      if subject_ids.size == 1
+        @journals = JournalSubject.where(:subject_id => subject_ids.first).where(:year => 0).order("articles_count desc").limit(20).includes(:journal).map {|js| js.journal}
+      else
+        article_ids = ArticleSubject.select("article_id, count(*) subjects").where(:subject_id => subject_ids).group(:article_id).having("subjects=#{subject_ids.size}").map{|as| as.article_id}
+        journal_ids = Article.where(:id => article_ids).group(:journal_id).select("journal_id, count(*) articles").order("articles desc").limit(20).map {|a| a.journal_id}
+        @journals = Journal.find(journal_ids)
+      end
     end
     render :layout => false
   end

@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324014011) do
+ActiveRecord::Schema.define(:version => 20110325184819) do
+
+  create_table "article_subjects", :force => true do |t|
+    t.integer "article_id"
+    t.integer "subject_id"
+  end
+
+  add_index "article_subjects", ["subject_id"], :name => "index_article_subjects_on_subject_id"
+
+  create_table "articles", :force => true do |t|
+    t.integer "journal_id"
+    t.integer "pubyear"
+  end
+
+  add_index "articles", ["journal_id"], :name => "index_articles_on_journal_id"
 
   create_table "journal_subjects", :force => true do |t|
     t.integer "journal_id"

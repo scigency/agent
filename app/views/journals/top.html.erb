@@ -1,5 +1,5 @@
 <ul>
 <% @journals.each do |j| %>
-  <li><%= j.journal.abbr %></li>
+  <li><%= link_to j.abbr, journal_path(j) %></li>
 <% end %>
 </ul>
