@@ -1,5 +1,9 @@
-<ul>
-<% @journals.each do |j| %>
-  <li><%= link_to j.abbr, journal_path(j) %></li>
+<% if @journals.size > 0 %>
+  <ol>
+  <% @journals.each do |j| %>
+    <li><%= link_to j.abbr, journal_path(j) %></li>
+  <% end %>
+  </ol>
+<% else %>
+  No journal!
 <% end %>
-</ul>
